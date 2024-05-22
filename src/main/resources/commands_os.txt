@@ -8,12 +8,12 @@ sudo apt install -y openjdk-17-jdk maven nginx  установка джебы, �
 sudo mkdir -p /home/rutuser/app
 cd /home/rutuser/app
 ls -ld /home/rutuser/app изменение прав доступа к директории app
-sudo git clone https://github.com/ScWitch/popitka.git
-cd /home/rutuser/app/popitka
+sudo git clone https://github.com/GuslyakovDaniil/Adminka.git
+cd /home/rutuser/app/Adminka
 sudo mvn clean package
 sudo mkdir -p /var/www/app
-sudo cp target//popitka-0.0.1-SNAPSHOT.jar /var/www/app перенос собранного проекта 
-sudo chmod 755 /var/www/app//popitka-0.0.1-SNAPSHOT.jar  него есть права
+sudo cp target//Adminka-0.0.1-SNAPSHOT.jar /var/www/app перенос собранного проекта
+sudo chmod 755 /var/www/app//Adminka-0.0.1-SNAPSHOT.jar  него есть права
 sudo nano /etc/systemd/system/java-api-service.service  мой ДЭМОН
 
 _________________________________________________________________
@@ -23,7 +23,7 @@ After=network.target
 
 [Service]
 User=rutuser
-ExecStart=/usr/bin/java -jar /var/www/app/popitka-0.0.1-SNAPSHOT.jar
+ExecStart=/usr/bin/java -jar /var/www/app/Adminka-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 Restart=always
 RestartSec=10
