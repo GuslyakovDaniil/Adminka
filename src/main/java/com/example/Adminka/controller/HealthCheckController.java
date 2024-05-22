@@ -1,13 +1,13 @@
-package com.example.popitka.controller;
+package com.example.Adminka.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/health")
+@RequestMapping("/main")
 public class HealthCheckController {
     @GetMapping
     public ResponseEntity<String> healthCheck() {
-        String message = "ГДЕ Я???";
+        String message = "Добрый день !";
         return ResponseEntity.ok(message);
     }
 

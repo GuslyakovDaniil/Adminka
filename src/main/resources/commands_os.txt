@@ -1,17 +1,20 @@
+
+sudo apt-get install openssh-server
+
 ip addr  Проверка айпи адреса для подключения к вм
-ssh логин@айпишник
-sudo apt update
+ssh логин@айпишник   192.168.50.163
+sudo apt update типо обновление всяких пакетов
 sudo apt install -y openjdk-17-jdk maven nginx  установка джебы, мейвен, нджинк
 sudo mkdir -p /home/rutuser/app
 cd /home/rutuser/app
 ls -ld /home/rutuser/app изменение прав доступа к директории app
-git clone https://github.com/St1gt/ZachetAdminka.git
-cd /home/rutuser/app/ZachetAdminka
-mvn clean package
+sudo git clone https://github.com/ScWitch/popitka.git
+cd /home/rutuser/app/popitka
+sudo mvn clean package
 sudo mkdir -p /var/www/app
-sudo cp target//ZachetAdminka-0.0.1-SNAPSHOT.jar /var/www/app
-sudo chmod 755 /var/www/app//ZachetAdminka-0.0.1-SNAPSHOT.jar
-sudo nano /etc/systemd/system/java-api-service.service
+sudo cp target//popitka-0.0.1-SNAPSHOT.jar /var/www/app перенос собранного проекта 
+sudo chmod 755 /var/www/app//popitka-0.0.1-SNAPSHOT.jar  него есть права
+sudo nano /etc/systemd/system/java-api-service.service  мой ДЭМОН
 
 _________________________________________________________________
 [Unit]
@@ -20,7 +23,7 @@ After=network.target
 
 [Service]
 User=rutuser
-ExecStart=/usr/bin/java -jar /var/www/app/ZachetAdminka-0.0.1-SNAPSHOT.jar
+ExecStart=/usr/bin/java -jar /var/www/app/popitka-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 Restart=always
 RestartSec=10
@@ -33,20 +36,22 @@ WantedBy=multi-user.target
 cntrl+O
 Enter
 cntrl+X
+y
+Enter
 __________________________________________________________________
-
-
 sudo systemctl daemon-reload
 sudo systemctl start java-api-service
 sudo systemctl enable java-api-service
-systemctl status java-api-service
+sudo systemctl status java-api-service   
 
-sudo nano /etc/nginx/sites-available/default
+Нажать q
+
+sudo nano /etc/nginx/sites-available/default 
 комментируем все
 
 
 __________________________________________________________________
-sudo nano /etc/nginx/sites-available/java-api-service
+sudo nano /etc/nginx/sites-available/java-api-service реально в свои настройки Винкс
 
 server {
     listen 80;
@@ -64,24 +69,50 @@ server {
 __________________________________________________________________
 
 sudo ln -s /etc/nginx/sites-available/java-api-service /etc/nginx/sites-enabled/java-api-service
-
+пернос кудато что-то
 sudo systemctl restart nginx
 
 ip addr - для определения ip машины
 
 Пример просмотра запроса в http
-http://192.168.50.140/health
+http://192.168.50.238/main
 
 Пример запросов:
 
-GET http://192.168.50.140/health
+GET http://192.168.50.163/main
 
-GET http://192.168.50.140/buyers/get_all_buyers
+GET http://192.168.50.163/users/get_all_users
 
-GET http://192.168.50.140/cars/get_all_cars
+GET http://192.168.50.163/books/get_all_books
 
 
 Если будут проблемы с портом и он чем то занят 
 sudo ss -tuln | grep :80
 sudo lsof -i :80
 sudo systemctl stop apache2
+
+1)ls -al
+. текущая
+.. родительская текущей
+4) mkdir -p /home/rutuser/userdir/newdir/
+sudo cp ~/test.txt /home/rutuser/userdir/newdir/
+cd /home/rutuser/userdir/newdir/
+ls -al
+cd rutuser
+5)sudo ln -s /etc/hosts /home/rutuser/userdir/newdir/hosts_link
+ls -l /home/rutuser/userdir/newdir проверка
+6)chmod 000 ~/test.txt
+ls -l ~/test.txt
+7)date > ~/current_date.txt
+cat ~/current_date.txt
+8)echo -e '#!/bin/bash\n echo "fjh"' > ~/greeting.sh
+~/greeting.sh
+9)ps -e | awk '{print $1, $4}'
+10)sudo systemctl status java-api-service для поиска PID и проверки активности демонов
+htop емоны все нужен PID
+sudo renice -20 723 <-- мой Pid
+htop - это хорошо
+11)sudo kill -SIGTERM 723 
+12)
+sudo systemctl start java-api-service
+sudo systemctl status java-api-service

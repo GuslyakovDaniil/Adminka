@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>popitka</artifactId>
+    <artifactId>Adminka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>popitka</name>
-    <description>popitka</description>
+    <name>Adminka</name>
+    <description>Adminka</description>
     <properties>
         <java.version>17</java.version>
     </properties>
