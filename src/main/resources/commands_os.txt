@@ -5,11 +5,11 @@ ip addr  Проверка айпи адреса для подключения к
 ssh логин@айпишник   192.168.50.163
 sudo apt update типо обновление всяких пакетов
 sudo apt install -y openjdk-17-jdk maven nginx  установка джебы, мейвен, нджинк
-sudo mkdir -p /home/rutuser/app
-cd /home/rutuser/app
-ls -ld /home/rutuser/app изменение прав доступа к директории app
+sudo mkdir -p /home/adminka/app
+cd /home/adminka/app
+ls -ld /home/adminka/app изменение прав доступа к директории app
 sudo git clone https://github.com/GuslyakovDaniil/Adminka.git
-cd /home/rutuser/app/Adminka
+cd /home/adminka/app/Adminka
 sudo mvn clean package
 sudo mkdir -p /var/www/app
 sudo cp target//Adminka-0.0.1-SNAPSHOT.jar /var/www/app перенос собранного проекта
@@ -22,7 +22,7 @@ Description=Java API Service
 After=network.target
 
 [Service]
-User=rutuser
+User=adminka
 ExecStart=/usr/bin/java -jar /var/www/app/Adminka-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 Restart=always
@@ -32,7 +32,7 @@ RestartSec=10
 WantedBy=multi-user.target
 
 
-Выйти и сохранить 
+Выйти и сохранить
 cntrl+O
 Enter
 cntrl+X
@@ -42,11 +42,11 @@ __________________________________________________________________
 sudo systemctl daemon-reload
 sudo systemctl start java-api-service
 sudo systemctl enable java-api-service
-sudo systemctl status java-api-service   
+sudo systemctl status java-api-service
 
 Нажать q
 
-sudo nano /etc/nginx/sites-available/default 
+sudo nano /etc/nginx/sites-available/default
 комментируем все
 
 
@@ -86,7 +86,7 @@ GET http://192.168.50.163/users/get_all_users
 GET http://192.168.50.163/books/get_all_books
 
 
-Если будут проблемы с портом и он чем то занят 
+Если будут проблемы с портом и он чем то занят
 sudo ss -tuln | grep :80
 sudo lsof -i :80
 sudo systemctl stop apache2
@@ -94,13 +94,13 @@ sudo systemctl stop apache2
 1)ls -al
 . текущая
 .. родительская текущей
-4) mkdir -p /home/rutuser/userdir/newdir/
-sudo cp ~/test.txt /home/rutuser/userdir/newdir/
-cd /home/rutuser/userdir/newdir/
+4) mkdir -p /home/adminka/userdir/newdir/
+sudo cp ~/test.txt /home/adminka/userdir/newdir/
+cd /home/adminka/userdir/newdir/
 ls -al
-cd rutuser
-5)sudo ln -s /etc/hosts /home/rutuser/userdir/newdir/hosts_link
-ls -l /home/rutuser/userdir/newdir проверка
+cd adminka
+5)sudo ln -s /etc/hosts /home/adminka/userdir/newdir/hosts_link
+ls -l /home/adminka/userdir/newdir проверка
 6)chmod 000 ~/test.txt
 ls -l ~/test.txt
 7)date > ~/current_date.txt
