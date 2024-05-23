@@ -1,4 +1,4 @@
-packticket com.example.Adminka.model;
+package com.example.Adminka.model;
 
 public class User {
     private int id;
@@ -19,15 +19,19 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserusername() {
+        return userusername;
     }
 
-    public void setUsername(String buyer) {
-        this.username = username;
+    public void setUserusername(String userusername) {
+        this.userusername = userusername;
     }
 
-    public int getTicket() { return ticket; }
+    public int getTicket() {
+        return ticket;
+    }
 
-    public void setTicket(int ticket) { this.ticket = ticket; }
+    public void setTicket(int ticket) {
+        this.ticket = ticket;
+    }
 }

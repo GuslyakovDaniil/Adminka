@@ -3,23 +3,6 @@ package com.example.Adminka.model;
 public class Book {
 
     private int id;
-
-    public String getDir() {
-        return dir;
-    }
-
-    public void setDir(String dir) {
-        this.dir = dir;
-    }
-
-    public String getUniverse() {
-        return universe;
-    }
-
-    public void setUniverse(String universe) {
-        this.universe = universe;
-    }
-
     private String dir;
     private String universe;
 
@@ -35,5 +18,21 @@ public class Book {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDir() {
+        return dir;
+    }
+
+    public void setDir(String dir) {
+        this.dir = dir;
+    }
+
+    public String getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(String universe) {
+        this.universe = universe;
     }
 }
