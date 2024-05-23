@@ -2,7 +2,7 @@ package com.example.Adminka.model;
 
 public class User {
     private int id;
-    private String userusername;
+    private String username;
     private int ticket;
 
     public User(int id, String username, int ticket) {
@@ -19,12 +19,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserusername() {
-        return userusername;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserusername(String userusername) {
-        this.userusername = userusername;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getTicket() {
